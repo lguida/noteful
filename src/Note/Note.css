@@ -1,0 +1,23 @@
+.notebox {
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.group{
+    display: flex;
+    flex-direction: row;
+}
+
+.note-name{
+    margin: 10px;
+}
+
+.note-modified{
+    flex: 3;
+    margin: 10px;
+}
+
+.delete-note-btn{
+    flex: 1;
+    margin: 10px;
+}
