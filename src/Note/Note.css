@@ -10,6 +10,12 @@
 
 .note-name{
     margin: 10px;
+    color: black;
+    
+}
+
+.note-link{
+    text-decoration: none;
 }
 
 .note-modified{

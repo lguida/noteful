@@ -5,6 +5,7 @@ import SideBar from './SideBar/SideBar'
 import Main from './Main/Main'
 import './App.css'
 import FolderSidebar from './FolderSidbar/FolderSidebar'
+import NoteMain from './NoteMain/NoteMain'
 import STORE from './store.js'
 
 class App extends React.Component {
@@ -25,9 +26,9 @@ class App extends React.Component {
       <main className='App'>
         <Nav />
         <div className="group">
-          <Route path='/:folderId' render={routeProps => (
+        <Route exact path='/' render={routeProps => (
             <>
-              <SideBar 
+              <FolderSidebar 
                 folders={this.state.folders}
                 notes={this.state.notes}
                 {...routeProps}/> 
@@ -36,6 +37,31 @@ class App extends React.Component {
                 {...routeProps}/>
             </>
             )}
+          />
+          <Route path='/folder/:folderId' render={routeProps => (
+            <>
+              <FolderSidebar 
+                folders={this.state.folders}
+                notes={this.state.notes}
+                {...routeProps}/> 
+              <Main 
+                store={this.state}
+                {...routeProps}/>
+            </>
+            )}
+          />
+          <Route path='/note/:noteId' render={(routeProps) => (
+            <>
+            <SideBar 
+              folders={this.state.folders}
+              notes={this.state.notes}
+              {...routeProps}
+              /> 
+            <NoteMain 
+              store={this.state}
+              {...routeProps}/>
+            </>
+          )}
           />
         </div>
       </main>

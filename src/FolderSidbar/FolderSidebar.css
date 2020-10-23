@@ -1,0 +1,30 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    list-style-type: none;
+}
+
+
+
+.folder-btn{
+    background-color: lightskyblue;
+    text-align: center;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.folder-link {
+    display:block;
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+}
+
+.folder-link.active {
+    background-color:yellow;
+}
+
+button{
+    margin:10px;
+}

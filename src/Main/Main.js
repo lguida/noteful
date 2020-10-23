@@ -9,6 +9,7 @@ class Main extends React.Component {
         return(
          <div className='main'>
              <Note notes={notes}/>
+             <button>Add Note</button>
          </div>
         )
     }
