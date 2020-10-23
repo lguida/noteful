@@ -5,6 +5,7 @@ import SideBar from './SideBar/SideBar'
 import Main from './Main/Main'
 import './App.css'
 import FolderSidebar from './FolderSidbar/FolderSidebar'
+import NotefulContext from './NotefulContext'
 import NoteMain from './NoteMain/NoteMain'
 import STORE from './store.js'
 
@@ -12,6 +13,18 @@ class App extends React.Component {
   state = {
     notes: [],
     folders: []
+  }
+
+  addNote = note => {
+    console.log('adding note', note)
+  }
+
+  addFolder = folder =>{
+    console.log('adding folder', folder)
+  }
+
+  deleteNote = noteId => {
+    console.log('deleting noteId', noteId)
   }
 
   componentDidMount() {
@@ -22,47 +35,28 @@ class App extends React.Component {
   }
 
   render(){
+    const contextValue = {
+      store: STORE,
+      addNote: this.addNote,
+      addFoler: this.addFolder,
+      deleteNote: this.deleteNote,
+    }
     return (
       <main className='App'>
         <Nav />
         <div className="group">
-        <Route exact path='/' render={routeProps => (
-            <>
-              <FolderSidebar 
-                folders={this.state.folders}
-                notes={this.state.notes}
-                {...routeProps}/> 
-              <Main 
-                store={this.state}
-                {...routeProps}/>
-            </>
-            )}
-          />
-          <Route path='/folder/:folderId' render={routeProps => (
-            <>
-              <FolderSidebar 
-                folders={this.state.folders}
-                notes={this.state.notes}
-                {...routeProps}/> 
-              <Main 
-                store={this.state}
-                {...routeProps}/>
-            </>
-            )}
-          />
-          <Route path='/note/:noteId' render={(routeProps) => (
-            <>
-            <SideBar 
-              folders={this.state.folders}
-              notes={this.state.notes}
-              {...routeProps}
-              /> 
-            <NoteMain 
-              store={this.state}
-              {...routeProps}/>
-            </>
-          )}
-          />
+        <NotefulContext.Provider value={contextValue}>
+          
+          <Route exact path='/' component={FolderSidebar}/>
+          <Route exact path='/' component={Main}/>
+
+          <Route exact path='/folder/:folderId' component={FolderSidebar}/>
+          <Route exact path='/folder/:folderId' component={Main}/>
+
+          <Route exact path='/note/:noteId' component={SideBar}/>
+          <Route exact path='/note/:noteId' component={NoteMain}/>
+          
+          </NotefulContext.Provider>
         </div>
       </main>
     );

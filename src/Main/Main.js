@@ -1,10 +1,13 @@
 import React from 'react'
 import './Main.css'
 import Note from '../Note/Note'
+import NotefulContext from '../NotefulContext'
 
 class Main extends React.Component {
+    static contextType = NotefulContext
+
     render(){
-        const notes = this.props.store.notes.filter(n => 
+        const notes = this.context.store.notes.filter(n => 
             n.folderId === this.props.match.params.folderId)
         return(
          <div className='main'>
