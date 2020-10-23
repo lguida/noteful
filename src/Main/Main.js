@@ -3,15 +3,18 @@ import './Main.css'
 import Note from '../Note/Note'
 import NotefulContext from '../NotefulContext'
 
+
+
+
 class Main extends React.Component {
     static contextType = NotefulContext
-
     render(){
         const notes = this.context.notes.filter(n => 
             n.folderId === this.props.match.params.folderId)
+        const folder = this.props.match.params.folderId
         return(
          <div className='main'>
-             <Note notes={notes}/>
+             <Note notes={notes} notePage='false' folder={folder}/>
              <button>Add Note</button>
          </div>
         )

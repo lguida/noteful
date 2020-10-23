@@ -6,20 +6,27 @@ import NotefulContext from '../NotefulContext'
 class SideBar extends React.Component {
     static contextType = NotefulContext
     render(){
+        let folder
+        let folderName =''
+        let folderpath
         const note = this.context.notes.find(n =>
             n.id === this.props.match.params.noteId)
-        const folder = (this.context.folders.find(f =>
-            f.id === note.folderId))
-        let folderName =''
-        let folderId = ''
+        if (note !== undefined){
+            folder = (this.context.folders.find(f =>
+                f.id === note.folderId))
+        }
+        
         if (folder !== undefined){
             folderName = folder.name
-            folderId = folder.id
+            folderpath = `/folder/${folder.Id}`
+        }
+        else {
+            folderpath = ('/')
         }
         return(
          <div className="sidebar">
             <button>
-                <Link to={`/folder/${folderId}`}>
+                <Link to={folderpath}>
                     Go back
                 </Link>
             </button>

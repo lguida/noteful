@@ -41,12 +41,15 @@ class App extends React.Component {
 
   deleteNote = noteId => {
     console.log('deleting noteId', noteId)
+    const newNotes = this.state.notes.filter(n =>
+      n.id !== noteId)
+    this.setState({
+      notes: newNotes
+    })
   }
 
   componentDidMount() {
-    const urlFolders = config.API_URL + "/folders"
-    const urlNotes = config.API_URL + "/notes"
-    fetch(urlFolders, {
+    fetch(config.urlFolders, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -61,7 +64,7 @@ class App extends React.Component {
     .then(this.setFolders)
     .catch(error => this.setState({ error }))
 
-    fetch(urlNotes, {
+    fetch(config.urlNotes, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',

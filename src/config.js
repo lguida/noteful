@@ -1,3 +1,4 @@
 export default {
-    API_URL: 'http://localhost:9090' 
+    urlFolders: 'http://localhost:9090/folders',
+    urlNotes: 'http://localhost:9090/notes'
 }
