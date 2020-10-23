@@ -7,12 +7,28 @@ import './App.css'
 import FolderSidebar from './FolderSidbar/FolderSidebar'
 import NotefulContext from './NotefulContext'
 import NoteMain from './NoteMain/NoteMain'
-import STORE from './store.js'
+import config from './config'
 
 class App extends React.Component {
   state = {
+    folders: [],
     notes: [],
-    folders: []
+    error: null,
+  }
+
+  setFolders = folders => {
+    this.setState({
+      folders,
+      notes: this.state.notes,
+      error: null,
+    })
+  }
+  setNotes = notes => {
+    this.setState({
+      folders: this.state.folders,
+      notes,
+      error: null,
+    })
   }
 
   addNote = note => {
@@ -28,15 +44,43 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      notes: STORE.notes,
-      folders: STORE.folders
+    const urlFolders = config.API_URL + "/folders"
+    const urlNotes = config.API_URL + "/notes"
+    fetch(urlFolders, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      }
     })
+    .then(res => {
+      if (!res.ok){
+        throw new Error(res.status)
+      }
+      return res.json()
+    })
+    .then(this.setFolders)
+    .catch(error => this.setState({ error }))
+
+    fetch(urlNotes, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      }
+    })
+    .then(res => {
+      if (!res.ok){
+        throw new Error(res.status)
+      }
+      return res.json()
+    })
+    .then(this.setNotes)
+    .catch(error => this.setState({ error }))
   }
 
   render(){
     const contextValue = {
-      store: STORE,
+      folders: this.state.folders,
+      notes: this.state.notes,
       addNote: this.addNote,
       addFoler: this.addFolder,
       deleteNote: this.deleteNote,
@@ -46,7 +90,7 @@ class App extends React.Component {
         <Nav />
         <div className="group">
         <NotefulContext.Provider value={contextValue}>
-          
+
           <Route exact path='/' component={FolderSidebar}/>
           <Route exact path='/' component={Main}/>
 

@@ -1,13 +1,14 @@
 import React from 'react'
 import './FolderSidebar.css'
-import STORE from '../store.js'
 import { NavLink } from 'react-router-dom'
+import NotefulContext from '../NotefulContext'
 
 class FolderSidebar extends React.Component {
+    static contextType = NotefulContext
     render(){
         return(
         <ul className="sidebar">
-            {STORE.folders.map(folder =>
+            {this.context.folders.map(folder =>
                <li key={folder.id} className='folder-btn'>
                    <NavLink className='folder-link' to={`/folder/${folder.id}`}>
                    {folder.name}

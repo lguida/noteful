@@ -7,9 +7,9 @@ class NoteMain extends React.Component {
     static contextType = NotefulContext
 
     render(){
-        const notes = this.context.store.notes.filter(n => 
+        const notes = this.context.notes.filter(n => 
             n.id === this.props.match.params.noteId)
-        const note = this.context.store.notes.find(n => 
+        const note = this.context.notes.find(n => 
             n.id === this.props.match.params.noteId)
         let noteContent = ''
         if (note !== undefined){

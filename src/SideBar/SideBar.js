@@ -6,9 +6,9 @@ import NotefulContext from '../NotefulContext'
 class SideBar extends React.Component {
     static contextType = NotefulContext
     render(){
-        const note = this.context.store.notes.find(n =>
+        const note = this.context.notes.find(n =>
             n.id === this.props.match.params.noteId)
-        const folder = (this.context.store.folders.find(f =>
+        const folder = (this.context.folders.find(f =>
             f.id === note.folderId))
         let folderName =''
         let folderId = ''

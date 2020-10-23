@@ -7,7 +7,7 @@ class Main extends React.Component {
     static contextType = NotefulContext
 
     render(){
-        const notes = this.context.store.notes.filter(n => 
+        const notes = this.context.notes.filter(n => 
             n.folderId === this.props.match.params.folderId)
         return(
          <div className='main'>
