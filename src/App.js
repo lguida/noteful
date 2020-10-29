@@ -8,11 +8,14 @@ import FolderSidebar from './FolderSidbar/FolderSidebar'
 import NotefulContext from './NotefulContext'
 import NoteMain from './NoteMain/NoteMain'
 import config from './config'
+import AddFolder from './AddFolder/AddFolder'
+import AddNote from './AddNote/AddNote'
 
 class App extends React.Component {
   state = {
     folders: [],
     notes: [],
+    idToUpdate: '',
     error: null,
   }
 
@@ -31,12 +34,19 @@ class App extends React.Component {
     })
   }
 
-  addNote = note => {
+  addNote = (note) => {
     console.log('adding note', note)
+    this.setState({
+      notes: [ ...this.state.notes, note],
+    })
   }
 
   addFolder = folder =>{
     console.log('adding folder', folder)
+    this.setState({
+      folders: [ ...this.state.folders, folder],
+      idToUpdate: folder.id
+    })
   }
 
   deleteNote = noteId => {
@@ -84,8 +94,9 @@ class App extends React.Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
+      idToUpdate: this.state.idToUpdate,
       addNote: this.addNote,
-      addFoler: this.addFolder,
+      addFolder: this.addFolder,
       deleteNote: this.deleteNote,
     }
     return (
@@ -102,6 +113,12 @@ class App extends React.Component {
 
           <Route exact path='/note/:noteId' component={SideBar}/>
           <Route exact path='/note/:noteId' component={NoteMain}/>
+
+          <Route exact path='/addfolder' component={FolderSidebar}/>
+          <Route exact path='/addfolder' component={AddFolder}/>
+
+          <Route exact path='/addnote' component={FolderSidebar}/>
+          <Route exact path='/addnote' component={AddNote}/>
           
           </NotefulContext.Provider>
         </div>

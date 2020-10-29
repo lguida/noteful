@@ -1,0 +1,39 @@
+.addNote{
+    display: flex;
+    flex-direction: column;
+    flex:3;
+    list-style-type: none;
+}
+
+h2, label {
+    text-align: center;
+    margin-top: 10px
+}
+
+.name-label, .addNote-textField{
+    flex: 3;
+    margin: 5px 20px;
+}
+.folder-label, .selectFolder{
+    flex: 1;
+    margin: 5px 20px;
+}
+
+.contentInput {
+    margin: 5px;
+    min-height: 70px;
+}
+
+.addfolder-hint{
+    text-align: center;
+    font-size: 10px
+}
+
+label{
+    margin-bottom:10px;
+}
+
+input {
+    width: 80%;
+    margin: 0 auto;
+}

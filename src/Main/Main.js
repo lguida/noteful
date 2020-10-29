@@ -1,6 +1,7 @@
 import React from 'react'
 import './Main.css'
 import Note from '../Note/Note'
+import { Link } from "react-router-dom"
 import NotefulContext from '../NotefulContext'
 
 
@@ -15,7 +16,9 @@ class Main extends React.Component {
         return(
          <div className='main'>
              <Note notes={notes} notePage='false' folder={folder}/>
-             <button>Add Note</button>
+             <Link className="addNote-btn-link" to={'/addNote'}>
+                <button>Add Note</button>
+             </Link>
          </div>
         )
     }
