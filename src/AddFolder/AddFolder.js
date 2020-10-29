@@ -1,6 +1,5 @@
 import React from 'react'
 import './AddFolder.css'
-import { Link } from 'react-router-dom'
 import config from '../config'
 import NotefulContext from '../NotefulContext'
 import { withRouter } from 'react-router-dom'
@@ -62,7 +61,6 @@ class AddFolder extends React.Component {
         this.setState({ folderName: { value: name, touched: true} })
     }
     
-    //validate if the folder name already exists?
     validateName() {
         const name = this.state.folderName.value.trim()
         if (name.length === 0){

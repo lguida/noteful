@@ -1,8 +1,10 @@
 import React from 'react'
 import './Note.css'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import config from '../config'
 import NotefulContext from '../NotefulContext'
+
 
 function deleteNoteRequest(noteId, callback){
     fetch(config.urlNotes +`/${noteId}`, {
@@ -33,7 +35,7 @@ class Note extends React.Component {
     static contextType = NotefulContext
     render(){
         let deletePath = `/folder/${this.props.folder}`
-        if (this.props.notePage === 'true'){
+        if (this.props.notePage === true){
             deletePath = '/'
         }
         return(
@@ -62,6 +64,12 @@ class Note extends React.Component {
             </>
         )
     }
+}
+
+Note.propTypes = {
+    notes: PropTypes.array,
+    notePage: PropTypes.bool,
+    folder: PropTypes.array
 }
 
 export default Note

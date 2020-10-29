@@ -3,6 +3,7 @@ import './NoteMain.css'
 import Note from '../Note/Note'
 import NotefulContext from '../NotefulContext'
 
+
 class NoteMain extends React.Component {
     static contextType = NotefulContext
 
@@ -22,11 +23,13 @@ class NoteMain extends React.Component {
         }
         return(
          <div className='main'>
-             <Note notes={notes} notePage='true' folder={folder}/>
+             <Note notes={notes} notePage={true} folder={folder}/>
             <p>{noteContent}</p>
          </div>
         )
     }
 }
+
+
 
 export default NoteMain

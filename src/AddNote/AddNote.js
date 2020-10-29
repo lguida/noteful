@@ -5,7 +5,6 @@ import NotefulContext from '../NotefulContext'
 import { withRouter } from 'react-router-dom'
 
 
-//need to add a bunch of the parameters her e
 
 class AddFolder extends React.Component {
     static contextType = NotefulContext
@@ -109,9 +108,6 @@ class AddFolder extends React.Component {
     }
 
  
-    //Cancel implementation may take some looking into
-        //history? I forget how to use that... 
-    //somehow get the save button to trigger
     render() {
         return(
             <form 

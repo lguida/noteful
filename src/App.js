@@ -10,6 +10,7 @@ import NoteMain from './NoteMain/NoteMain'
 import config from './config'
 import AddFolder from './AddFolder/AddFolder'
 import AddNote from './AddNote/AddNote'
+import ErrorBound from './ErrorBound/ErrorBound'
 
 class App extends React.Component {
   state = {
@@ -105,21 +106,31 @@ class App extends React.Component {
         <div className="group">
         <NotefulContext.Provider value={contextValue}>
 
-          <Route exact path='/' component={FolderSidebar}/>
-          <Route exact path='/' component={Main}/>
+          <ErrorBound>
+            <Route exact path='/' component={FolderSidebar}/>
+            <Route exact path='/' component={Main}/>
+          </ErrorBound>
 
-          <Route exact path='/folder/:folderId' component={FolderSidebar}/>
-          <Route exact path='/folder/:folderId' component={Main}/>
+          <ErrorBound>
+            <Route exact path='/folder/:folderId' component={FolderSidebar}/>
+            <Route exact path='/folder/:folderId' component={Main}/>
+          </ErrorBound>
 
-          <Route exact path='/note/:noteId' component={SideBar}/>
-          <Route exact path='/note/:noteId' component={NoteMain}/>
+          <ErrorBound>
+            <Route exact path='/note/:noteId' component={SideBar}/>
+            <Route exact path='/note/:noteId' component={NoteMain}/>
+          </ErrorBound>
 
-          <Route exact path='/addfolder' component={FolderSidebar}/>
-          <Route exact path='/addfolder' component={AddFolder}/>
+          <ErrorBound>
+            <Route exact path='/addfolder' component={FolderSidebar}/>
+            <Route exact path='/addfolder' component={AddFolder}/>
+          </ErrorBound>
 
-          <Route exact path='/addnote' component={FolderSidebar}/>
-          <Route exact path='/addnote' component={AddNote}/>
-          
+          <ErrorBound>
+            <Route exact path='/addnote' component={FolderSidebar}/>
+            <Route exact path='/addnote' component={AddNote}/>
+          </ErrorBound>
+
           </NotefulContext.Provider>
         </div>
       </main>
