@@ -15,7 +15,7 @@ class Main extends React.Component {
         const folder = this.props.match.params.folderId
         return(
          <div className='main'>
-             <Note notes={notes} notePage='false' folder={folder}/>
+             <Note notes={notes} notePage={false} folder={folder}/>
              <Link className="addNote-btn-link" to={'/addNote'}>
                 <button>Add Note</button>
              </Link>

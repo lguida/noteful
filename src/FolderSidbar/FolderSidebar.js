@@ -15,9 +15,11 @@ class FolderSidebar extends React.Component {
                    </NavLink>
                </li>
            )}
+           <li>
            <NavLink className="addFolder-link" to={'/addfolder'}>
                 <button>Add folder</button>
            </NavLink>
+           </li>
         </ul>
         )
     }
