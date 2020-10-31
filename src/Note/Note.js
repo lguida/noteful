@@ -67,9 +67,9 @@ class Note extends React.Component {
 }
 
 Note.propTypes = {
-    notes: PropTypes.array,
-    notePage: PropTypes.bool,
-    folder: PropTypes.string
+    notes: PropTypes.array.isRequired,
+    notePage: PropTypes.bool.isRequired,
+    folder: PropTypes.string.isRequired
 }
 
 export default Note
