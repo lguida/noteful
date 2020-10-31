@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 
 
-class AddFolder extends React.Component {
+class AddNote extends React.Component {
     static contextType = NotefulContext
     constructor(props){
         super(props)
@@ -173,4 +173,4 @@ class AddFolder extends React.Component {
     }
 }
 
-export default withRouter(AddFolder)
+export default withRouter(AddNote)

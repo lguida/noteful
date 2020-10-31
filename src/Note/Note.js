@@ -69,7 +69,7 @@ class Note extends React.Component {
 Note.propTypes = {
     notes: PropTypes.array,
     notePage: PropTypes.bool,
-    folder: PropTypes.array
+    folder: PropTypes.string
 }
 
 export default Note
