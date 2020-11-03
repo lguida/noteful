@@ -1,6 +1,7 @@
 import React from 'react'
 import './AddFolder.css'
 import config from '../config'
+import PropTypes from 'prop-types'
 import NotefulContext from '../NotefulContext'
 import { withRouter } from 'react-router-dom'
 
@@ -46,7 +47,6 @@ class AddFolder extends React.Component {
             return res.json()
           })
           .then(data =>{
-            console.log(data)
             callback(folderToAdd)
             this.props.history.push(`/folder/${folderToAdd.id}`)
         })
@@ -113,6 +113,10 @@ class AddFolder extends React.Component {
             </form>
         )
     }
+}
+
+AddFolder.propTypes = {
+    history: PropTypes.object.isRequired
 }
 
 export default withRouter(AddFolder)

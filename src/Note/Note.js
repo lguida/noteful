@@ -22,7 +22,6 @@ function deleteNoteRequest(noteId, callback){
         return res.json()
     })
     .then(data =>{
-        console.log(data)
         callback(noteId)
     })
     .catch(error => {
@@ -69,7 +68,7 @@ class Note extends React.Component {
 Note.propTypes = {
     notes: PropTypes.array.isRequired,
     notePage: PropTypes.bool.isRequired,
-    folder: PropTypes.string.isRequired
+    folder: PropTypes.string
 }
 
 export default Note

@@ -36,14 +36,12 @@ class App extends React.Component {
   }
 
   addNote = (note) => {
-    console.log('adding note', note)
     this.setState({
       notes: [ ...this.state.notes, note],
     })
   }
 
   addFolder = folder =>{
-    console.log('adding folder', folder)
     this.setState({
       folders: [ ...this.state.folders, folder],
       idToUpdate: folder.id
@@ -51,7 +49,6 @@ class App extends React.Component {
   }
 
   deleteNote = noteId => {
-    console.log('deleting noteId', noteId)
     const newNotes = this.state.notes.filter(n =>
       n.id !== noteId)
     this.setState({

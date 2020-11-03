@@ -1,6 +1,7 @@
 import React from 'react'
 import './Main.css'
 import Note from '../Note/Note'
+import PropTypes from 'prop-types'
 import { Link } from "react-router-dom"
 import NotefulContext from '../NotefulContext'
 
@@ -22,6 +23,10 @@ class Main extends React.Component {
          </div>
         )
     }
+}
+
+Main.propTypes ={ 
+    match: PropTypes.object.isRequired
 }
 
 export default Main

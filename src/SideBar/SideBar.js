@@ -2,6 +2,7 @@ import React from 'react'
 import './SideBar.css'
 import { Link } from 'react-router-dom'
 import NotefulContext from '../NotefulContext'
+import PropTypes from 'prop-types'
 
 class SideBar extends React.Component {
     static contextType = NotefulContext
@@ -34,6 +35,10 @@ class SideBar extends React.Component {
          </div>
         )
     }
+}
+
+SideBar.propTypes ={ 
+    match: PropTypes.object.isRequired
 }
 
 export default SideBar 

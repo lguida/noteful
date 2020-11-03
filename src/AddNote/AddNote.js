@@ -1,6 +1,7 @@
 import React from 'react'
 import './AddNote.css'
 import config from '../config'
+import PropTypes from 'prop-types'
 import NotefulContext from '../NotefulContext'
 import { withRouter } from 'react-router-dom'
 
@@ -63,7 +64,6 @@ class AddNote extends React.Component {
             return res.json()
           })
           .then(data =>{
-            console.log(data)
             callback(noteToAdd)
             this.props.history.push(`/folder/${noteToAdd.folderId}`)
         })
@@ -171,6 +171,10 @@ class AddNote extends React.Component {
             </form>
         )
     }
+}
+
+AddNote.propTypes = {
+    history: PropTypes.object.isRequired
 }
 
 export default withRouter(AddNote)
