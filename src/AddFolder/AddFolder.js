@@ -30,7 +30,6 @@ class AddFolder extends React.Component {
     handleSubmit(event, value, callback) {
         event.preventDefault()
         const folderToAdd = {
-                "id": this.randomStr(8, '12345abcde')+ "-ffaf-11e8-8eb2-f2801f1b9fd1",
                 "name": value
             }
         fetch(config.urlFolders, {
@@ -47,8 +46,12 @@ class AddFolder extends React.Component {
             return res.json()
           })
           .then(data =>{
-            callback(folderToAdd)
-            this.props.history.push(`/folder/${folderToAdd.id}`)
+              const addFolderToList = {
+                  "id": data.id,
+                  "name": value
+              }
+            callback(addFolderToList)
+            this.props.history.push(`/folder/${data.id}`)
         })
         .catch(error => console.log(error))
     }

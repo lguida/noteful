@@ -17,7 +17,7 @@ class AddNote extends React.Component {
                 touched: false
             },
             folder: {
-                value: "",
+                value: 1,
                 touched: false
             },
             content: {
@@ -47,7 +47,7 @@ class AddNote extends React.Component {
                 "id": this.randomStr(8, '12345abcde')+ "-ffaf-11e8-8eb2-f2801f1b9fd1",
                 "name": stateValues.noteName.value,
                 "modified": this.createDateModified(),
-                "folderId": stateValues.folder.value,
+                "folder_id": stateValues.folder.value,
                 "content": stateValues.content.value
             }
         fetch(config.urlNotes, {
@@ -135,6 +135,7 @@ class AddNote extends React.Component {
                         className="selectFolder"
                         name="selectFolder"
                         id="selectFolder"
+                        value={this.context.folders[0]}
                         onChange={e => this.updateFolder(e.target.value)}
                         >
                         {this.context.folders.map(folder =>

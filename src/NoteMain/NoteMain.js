@@ -10,10 +10,11 @@ class NoteMain extends React.Component {
 
     render(){
         const notes = this.context.notes.filter(n => 
-            n.id === this.props.match.params.noteId)
+            n.id === parseInt(this.props.match.params.noteId))
         const note = this.context.notes.find(n => 
-            n.id === this.props.match.params.noteId)
+            n.id === parseInt(this.props.match.params.noteId))
         let folder=''
+
         if (note !== undefined){
             folder = this.context.folders.find(f =>
                 f.id === notes.folderId)

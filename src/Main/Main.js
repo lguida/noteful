@@ -12,8 +12,9 @@ class Main extends React.Component {
     static contextType = NotefulContext
     render(){
         const notes = this.context.notes.filter(n => 
-            n.folderId === this.props.match.params.folderId)
+            n.folder_id === parseInt(this.props.match.params.folderId))
         const folder = this.props.match.params.folderId
+
         return(
          <div className='main'>
              <Note notes={notes} notePage={false} folder={folder}/>
